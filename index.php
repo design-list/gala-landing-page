@@ -30,7 +30,7 @@
   <div class="spinner"></div>
 </div> -->
     <!-- Fireworks canvas -->
-    <!-- <canvas id="canvas"></canvas> -->
+    <canvas id="canvas"></canvas>
 
     <!-- HEADER / NAV -->
     <header class="text-center py-1 bg-light shadow-sm">
