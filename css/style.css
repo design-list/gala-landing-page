@@ -56,12 +56,41 @@ body {
   display: none;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 header {
   background-color: #203354 !important;
 }
 
+.loader-icon {
+  width: 200px;
+}
+
 main {
   /* Spinner Animation */
+}
+main .diya-label {
+  position: relative;
+  overflow: hidden;
+}
+main .diya-label::after, main .diya-label::before {
+  content: "";
+  background: url("../img/diya.gif");
+  background-repeat: repeat;
+  background-size: 40px 40px;
+  width: 45px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(360deg);
+}
+main .diya-label::before {
+  right: 0;
+  left: inherit;
+  z-index: 9;
 }
 main .hangingdiya {
   position: absolute;
@@ -69,26 +98,28 @@ main .hangingdiya {
   width: 100%;
   top: 0;
 }
+main .animate-icons {
+  position: absolute;
+}
+main .animate-icons.diya-lamp {
+  left: 4rem;
+  top: 5rem;
+}
+main .animate-icons.firecracker1 {
+  right: 4rem;
+  top: 5rem;
+}
+main .animate-icons.firecracker2 {
+  left: 4rem;
+  top: 65%;
+}
+main .animate-icons.firecracker3 {
+  left: 4rem;
+  top: -36%;
+}
 main section.ps2 {
   position: relative;
   text-align: center;
-}
-main section.ps2::after, main section.ps2::before {
-  content: "";
-  background: url("../img/diya.gif");
-  background-repeat: repeat;
-  background-size: 40px 40px;
-  width: 45px;
-  height: 100vh;
-  position: absolute;
-  top: -25%;
-  left: 0;
-  transform: rotate(360deg);
-}
-main section.ps2::before {
-  right: 0;
-  left: inherit;
-  z-index: 9;
 }
 main section.ps2 a {
   position: absolute;
@@ -96,32 +127,32 @@ main section.ps2 a {
   color: inherit;
 }
 main section.ps2 img.layout-banner {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
 }
 main section.ps2 a.bathroom {
-  bottom: 20%;
-  left: 40%;
+  bottom: 17%;
+  left: 37%;
 }
 main section.ps2 a.tabkitchen {
-  top: 14%;
+  top: 25%;
   left: 48%;
 }
 main section.ps2 a.tabbedroom {
-  top: 66%;
-  left: 28%;
+  top: 71%;
+  left: 23%;
 }
 main section.ps2 a.tablivingroom {
   top: 38%;
   left: 41%;
 }
 main section.ps2 a.tabdining {
-  top: 30%;
-  left: 66%;
+  top: 43%;
+  left: 70%;
 }
 main section.ps2 a.tabbalcony {
-  top: 8%;
-  left: 30%;
+  top: 21%;
+  left: 26%;
 }
 main section.ps4 {
   background-color: rgb(32, 51, 84) !important;
@@ -144,8 +175,11 @@ main section.ps4 #myTabContent .tab-pane .item iframe {
 main section.ps4 .owl-carousel .video-container {
   height: 100%;
 }
-main section.ps4 .owl-carousel .owl-nav button.owl-next, main section.ps4 .owl-carousel .owl-nav button.owl-prev, main section.ps4 .owl-carousel button.owl-dot {
+main section.ps4 .owl-carousel .owl-nav button.owl-next,
+main section.ps4 .owl-carousel .owl-nav button.owl-prev,
+main section.ps4 .owl-carousel button.owl-dot {
   font-size: 2rem;
+  color: white;
 }
 main section.ps4 .video-loader {
   position: absolute;
@@ -299,10 +333,10 @@ canvas {
 
 @media (max-width: 640px) {
   .desktopview {
-    display: block;
+    display: none;
   }
   .mobileview {
-    display: none;
+    display: block;
   }
   header {
     padding-left: 0px !important;
@@ -315,7 +349,6 @@ canvas {
   ul.nav {
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-start !important;
     align-items: center;
     overflow-x: scroll;
     height: 38px;
@@ -333,6 +366,48 @@ canvas {
     text-decoration: none;
     font-size: 10px;
     color: #707070;
+  }
+  main .diya-label::after,
+  main .diya-label::before {
+    background-size: 25px 25px;
+    width: 20px;
+  }
+  main .diya-label::after {
+    left: -6px;
+  }
+  main .animate-icons.diya-lamp {
+    left: 2rem;
+    top: 1rem;
+  }
+  main .animate-icons {
+    width: 70px;
+  }
+  main section.ps4 #myTabContent .tab-pane .item {
+    height: 250px;
+  }
+  main section.ps2 a.tabbalcony {
+    top: 18%;
+    left: 60%;
+  }
+  main section.ps2 a.tabdining {
+    top: inherit;
+    left: 66%;
+    bottom: 12%;
+  }
+  main section.ps2 a.tablivingroom {
+    top: 44%;
+  }
+  main section.ps2 a.tabbedroom {
+    top: 82%;
+    left: 22%;
+  }
+  main section.ps2 a.tabkitchen {
+    top: 54%;
+    left: 70%;
+  }
+  main section.ps2 a.bathroom {
+    bottom: 50%;
+    left: 12%;
   }
   footer .de-li a {
     font-size: 10px;
@@ -415,17 +490,12 @@ a[id^=tab]:hover .tooltip {
 }
 
 h1 {
-  font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   letter-spacing: 14px;
   padding-left: 14px;
   color: white;
   font-size: 22px;
-  margin-top: 80px;
-}
-
-h1 span {
-  font-weight: 100;
+  margin-top: 0;
 }
 
 .rect {

@@ -63,44 +63,74 @@ body {
 .desktopview {
   display: block;
 }
-
 .mobileview {
   display: none;
 }
-
-header{background-color: #203354 !important;}
-
+.text-justify {
+  text-align: justify;
+}
+header {
+  background-color: #203354 !important;
+}
+.loader-icon {
+  width: 200px;
+}
 main {
+  .diya-label {
+    position: relative;
+    overflow: hidden;
+    &::after,
+    &::before {
+      content: "";
+      background: url("../img/diya.gif");
+      background-repeat: repeat;
+      background-size: 40px 40px;
+      width: 45px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotate(360deg);
+    }
+    &::before {
+      right: 0;
+      left: inherit;
+      z-index: 9;
+    }
+  }
+
   .hangingdiya {
     position: absolute;
     z-index: 9;
     width: 100%;
     top: 0;
   }
+
+  .animate-icons {
+    position: absolute;
+    &.diya-lamp {
+      left: 4rem;
+      top: 5rem;
+    }
+
+    &.firecracker1 {
+      right: 4rem;
+      top: 5rem;
+    }
+
+    &.firecracker2 {
+      left: 4rem;
+      top: 65%;
+    }
+    &.firecracker3 {
+      left: 4rem;
+      top: -36%;
+    }
+  }
   section {
     &.ps2 {
       position: relative;
       text-align: center;
-
-      &::after,
-      &::before {
-        content: "";
-        background: url("../img/diya.gif");
-        background-repeat: repeat;
-        background-size: 40px 40px;
-        width: 45px;
-        height: 100vh;
-        position: absolute;
-        top: -25%;
-        left: 0;
-        transform: rotate(360deg);
-      }
-      &::before {
-        right: 0;
-        left: inherit;
-        z-index: 9;
-      }
-
       a {
         position: absolute;
         text-decoration: none;
@@ -126,24 +156,24 @@ main {
       }
 
       img.layout-banner {
-        width: 70%;
+        width: 80%;
         margin: 0 auto;
       }
 
       // 🔹 Room Positions (adjust as needed)
       a.bathroom {
-        bottom: 20%;
-        left: 40%;
+           bottom: 17%;
+    left: 37%;
       }
 
       a.tabkitchen {
-        top: 14%;
-        left: 48%;
+       top: 25%;
+    left: 48%;
       }
 
       a.tabbedroom {
-        top: 66%;
-        left: 28%;
+            top: 71%;
+    left: 23%;
       }
       a.tablivingroom {
         top: 38%;
@@ -151,17 +181,18 @@ main {
       }
 
       a.tabdining {
-        top: 30%;
-        left: 66%;
+           top: 43%;
+    left: 70%;
       }
 
       a.tabbalcony {
-        top: 8%;
-        left: 30%;
+           top: 21%;
+    left: 26%;
       }
     }
 
-    &.ps4 {    background-color: rgb(32, 51, 84) !important;
+    &.ps4 {
+      background-color: rgb(32, 51, 84) !important;
       ul {
         li {
           button {
@@ -182,21 +213,25 @@ main {
             height: 500px;
 
             iframe {
-                width: 100%;
+              width: 100%;
               height: 100%;
-
             }
           }
         }
       }
 
-      .owl-carousel{
-        .video-container{
-            height: 100%;
+      .owl-carousel {
+        .video-container {
+          height: 100%;
         }
       }
 
-    .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{font-size: 2rem;}
+      .owl-carousel .owl-nav button.owl-next,
+      .owl-carousel .owl-nav button.owl-prev,
+      .owl-carousel button.owl-dot {
+        font-size: 2rem;
+        color: white;
+      }
 
       .video-loader {
         position: absolute;
@@ -239,8 +274,6 @@ main {
           transform: rotate(360deg);
         }
       }
-
-      
     }
   }
 
@@ -379,11 +412,11 @@ canvas {
 
 @media (max-width: 640px) {
   .desktopview {
-    display: block;
+    display: none;
   }
 
   .mobileview {
-    display: none;
+    display: block;
   }
 
   header {
@@ -399,7 +432,7 @@ canvas {
   ul.nav {
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-start !important;
+    // justify-content: flex-start !important;
     align-items: center;
     overflow-x: scroll;
     height: 38px;
@@ -421,6 +454,33 @@ canvas {
       color: #707070;
     }
   }
+
+  main .diya-label::after,
+  main .diya-label::before {
+    background-size: 25px 25px;
+    width: 20px;
+  }
+  main .diya-label::after {
+    left: -6px;
+  }
+  main .animate-icons.diya-lamp {
+    left: 2rem;
+    top: 1rem;
+  }
+  main .animate-icons{width: 70px;}
+  main section.ps4 #myTabContent .tab-pane .item{    height: 250px;}
+  main section.ps2 a.tabbalcony{    top: 18%;
+    left: 60%;}
+    main section.ps2 a.tabdining{    top: inherit;
+    left: 66%;
+    bottom: 12%;}
+    main section.ps2 a.tablivingroom{    top: 44%;}
+    main section.ps2 a.tabbedroom{    top: 82%;
+    left: 22%;}
+    main section.ps2 a.tabkitchen{top: 54%;
+    left: 70%;}
+    main section.ps2 a.bathroom{    bottom: 50%;
+    left: 12%;}
 
   footer .de-li a {
     font-size: 10px;
@@ -507,17 +567,13 @@ a[id^="tab"]:hover .tooltip {
   flex-direction: column;
 }
 h1 {
-  font-family: "Raleway", sans-serif;
+  //   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   letter-spacing: 14px;
   padding-left: 14px;
   color: white;
   font-size: 22px;
-  margin-top: 80px;
-}
-
-h1 span {
-  font-weight: 100;
+  margin-top: 0;
 }
 
 .rect {
