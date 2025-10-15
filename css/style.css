@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap");
 body {
   font-family: "Fira Sans", sans-serif;
   color: #707070;
+  background-color: #203354 !important;
 }
 
 /* HelveticaBold */
@@ -10,7 +12,7 @@ body {
   src: url("./helvetica-rounded-bold.woff2");
 }
 .helvetica {
-  font-family: "Helvetica";
+  font-family: "Eagle Lake", serif;
 }
 
 :root {
@@ -46,10 +48,6 @@ body {
   margin: 0 auto;
 }
 
-header {
-  padding-left: 6rem;
-}
-
 .desktopview {
   display: block;
 }
@@ -61,50 +59,73 @@ header {
 main {
   /* Spinner Animation */
 }
+main .hangingdiya {
+  position: absolute;
+  z-index: 9;
+  width: 100%;
+  top: 0;
+}
 main section.ps2 {
   position: relative;
   text-align: center;
 }
-main section.ps2 img.layout-banner.desktopview {
-  width: 100%;
-  transform: rotate(180deg);
+main section.ps2::after, main section.ps2::before {
+  content: "";
+  background: url("../img/diya.gif");
+  background-repeat: repeat;
+  background-size: 40px 40px;
+  width: 45px;
+  height: 100vh;
+  position: absolute;
+  top: -25%;
+  left: 0;
+  transform: rotate(360deg);
+}
+main section.ps2::before {
+  right: 0;
+  left: inherit;
+  z-index: 9;
 }
 main section.ps2 a {
   position: absolute;
   text-decoration: none;
   color: inherit;
 }
+main section.ps2 img.layout-banner {
+  width: 70%;
+  margin: 0 auto;
+}
 main section.ps2 a.bathroom {
-  bottom: 42%;
-  right: 14%;
+  bottom: 20%;
+  left: 40%;
 }
 main section.ps2 a.tabkitchen {
-  bottom: 30%;
-  left: 54%;
+  top: 14%;
+  left: 48%;
 }
 main section.ps2 a.tabbedroom {
-  top: 32%;
-  right: 22%;
+  top: 66%;
+  left: 28%;
 }
 main section.ps2 a.tablivingroom {
-  bottom: 15%;
-  left: 35%;
+  top: 38%;
+  left: 41%;
 }
 main section.ps2 a.tabdining {
-  bottom: 22%;
-  left: 45%;
+  top: 30%;
+  left: 66%;
 }
 main section.ps2 a.tabbalcony {
-  top: 20%;
-  left: 10%;
+  top: 8%;
+  left: 30%;
 }
 main section.ps4 {
-  /* Loader Styles */
+  background-color: rgb(32, 51, 84) !important;
 }
 main section.ps4 ul li button {
   font-size: 1.3rem;
   font-family: var(--firasans);
-  color: #707070;
+  color: white;
 }
 main section.ps4 ul li button:hover {
   color: #ffcb06;
@@ -113,38 +134,50 @@ main section.ps4 #myTabContent .tab-pane .item {
   height: 500px;
 }
 main section.ps4 #myTabContent .tab-pane .item iframe {
-  height: 100%;
-}
-main section.ps4 .video-container {
-  position: relative;
   width: 100%;
   height: 100%;
-  padding-top: 56.25%;
 }
-main section.ps4 .video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+main section.ps4 .owl-carousel .video-container {
   height: 100%;
-  display: none;
-  border-radius: 8px;
+}
+main section.ps4 .owl-carousel .owl-nav button.owl-next, main section.ps4 .owl-carousel .owl-nav button.owl-prev, main section.ps4 .owl-carousel button.owl-dot {
+  font-size: 2rem;
 }
 main section.ps4 .video-loader {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 40px;
-  height: 40px;
-  border: 4px solid #ccc;
+  width: 48px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main section.ps4 .video-loader::before,
+main section.ps4 .video-loader::after {
+  content: "";
+  position: absolute;
+  border: 4px solid transparent;
   border-top-color: var(--secondarycolor, #ff7b00);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
-  transform: translate(-50%, -50%);
+  animation: loader-spin 1s linear infinite;
 }
-@keyframes spin {
+main section.ps4 .video-loader::before {
+  width: 40px;
+  height: 40px;
+  opacity: 0.7;
+}
+main section.ps4 .video-loader::after {
+  width: 24px;
+  height: 24px;
+  border-top-color: #ffcc80;
+  animation-duration: 0.7s;
+  opacity: 0.9;
+}
+@keyframes loader-spin {
   to {
-    transform: translate(-50%, -50%) rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 main .spinner-wrap {
@@ -257,7 +290,7 @@ canvas {
   position: fixed;
   height: 100vh;
   width: 100%;
-  z-index: 999;
+  z-index: 9;
 }
 
 @media (max-width: 640px) {
@@ -272,7 +305,8 @@ canvas {
   }
   main section.ps2 img.layout-banner {
     transform: none;
-    width: 100%;
+    width: 60%;
+    margin: 0 auto;
   }
   ul.nav {
     flex-direction: row;
@@ -326,7 +360,8 @@ a[id^=tab] {
 /* Tooltip default (hidden) */
 a[id^=tab] .tooltip {
   position: absolute;
-  bottom: 120%; /* position above the hotspot */
+  bottom: 120%;
+  /* position above the hotspot */
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.8);
@@ -361,4 +396,120 @@ a[id^=tab] .tooltip::after {
 a[id^=tab]:hover .tooltip {
   opacity: 1;
   transform: translateX(-50%) translateY(-4px);
+}
+
+.loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: rgba(32, 51, 84, 0.9803921569);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 14px;
+  padding-left: 14px;
+  color: white;
+  font-size: 22px;
+  margin-top: 80px;
+}
+
+h1 span {
+  font-weight: 100;
+}
+
+.rect {
+  border: 3px solid #ffc107;
+  width: 126px;
+  height: 126px;
+  animation: rotate-circle 0.01s linear 0s infinite normal;
+  border-radius: 32px;
+}
+
+.circle {
+  width: 120px;
+  height: 120px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: animate-circle 1.2s linear 0.6s infinite normal, rotate-circle 0.2s linear 0s infinite normal;
+  position: relative;
+}
+
+.dot {
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+}
+
+@keyframes rotate-circle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate-circle {
+  0% {
+    border: 4px solid rgb(255, 255, 255);
+    box-shadow: 0px 0px 120px 0px #a4a4cc;
+    /*background: white;*/
+  }
+  100% {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 10px 0px rgba(60, 60, 74, 0.11);
+  }
+}
+.dot:nth-child(1) {
+  animation: animate-dot-1;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+}
+
+.dot:nth-child(2) {
+  animation: animate-dot-2;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.5, 0.06, 0.91, 0.26);
+}
+
+@keyframes animate-dot-1 {
+  0% {
+    transform-origin: center center;
+    transform: translate3d(0px, 0px, 0px) scale(1);
+    background: #2d2d37;
+  }
+  100% {
+    transform-origin: center center;
+    transform: translate3d(0px, 53px, 0px) scale(0.2);
+    background: white;
+  }
+}
+@keyframes animate-dot-2 {
+  0% {
+    transform-origin: center center;
+    transform: translate3d(0px, 0px, 0px) scale(1);
+    background: #2d2d37;
+  }
+  100% {
+    transform-origin: center center;
+    transform: translate3d(0px, 53px, 0px) scale(1);
+    background: white;
+  }
 }/*# sourceMappingURL=style.css.map */

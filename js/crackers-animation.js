@@ -144,5 +144,5 @@ window.onload = function(){
     setTimeout(() => {
       canvas.style.display = "none";
     }, 3000); // after fade-out
-  }, 15000);
+  }, 10000);
 };
